@@ -1,2 +1,27 @@
-Coloque aqui suas instru��es ou coment�rios que ache �til/relevantes para possamos ler 
-quando estivermos avaliando a sua solu��o
+EXECUÇÃO
+========
+* Todos eventos que estiverem entre o ínicio e o fim da partida devem ser
+referêntes a mesma partida, isto é, não devem haver partidas em concorrência.
+Esta limitação acontece porque não há um identificador (`ID`) de partida em cada
+evento  de log. Se houver alguma partida sendo iniciada sem que a anterior
+tenha encerrado, será gerado uma exception e o programa encerrará.
+
+* A execução do programa imprime no console uma tabela de sumário de cada
+partida, segue uma demonstração:
+```
+Match 11348966
+|-------------------------------------------------------------------------------------|
+| Player               | Kills    | Deaths   | Principal Weapon     | Best Streak     |
+| Roman*               | 5        | 0        | M16                  | 5               | 5 deaths in 1 minute
+| Nick                 | 0        | 6        |                      | 0               |
+|-------------------------------------------------------------------------------------|
+```
+* Gostaria de destacar:
+    * `Principal Weapon`: Destaca a arma mais utilizada pelo jogador;
+    * `Best Streak`: Maior sequência de assassinatos efetuadas por um jogador sem morrer;
+    * `<player>*`: O `*` no nome do jogador indica que finalizou a partida sem morrer;
+    * `Player`: Quando o jogador termina a partida sem morrer, recebe um `*` no nome;
+    * `5 deaths in 1 minute`: Jogadores que concluirem o desafio de matar 5 vezes em 1 minuto, recebem o prêmio no sumário.
+    * A ordem da lista é pela quantidade de assassinatos (maior -> menor).
+
+* Considerei que o arquivo de log estará na raiz do projeto, então deixei algumas partidas prontas
