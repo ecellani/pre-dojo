@@ -1,5 +1,8 @@
 EXECUÇÃO
 ========
+* A classe `Main` é responsável pela execução da solução, porém, não há nenhum
+tipo de regra, apenas lê o arquivo de log e envia as informações ao interpretador.
+
 * Todos eventos que estiverem entre o ínicio e o fim da partida devem ser
 referêntes a mesma partida, isto é, não devem haver partidas em concorrência.
 Esta limitação acontece porque não há um identificador (`ID`) de partida em cada
@@ -25,3 +28,51 @@ Match 11348966
     * A ordem da lista é pela quantidade de assassinatos (maior -> menor).
 
 * Considerei que o arquivo de log estará na raiz do projeto, então deixei algumas partidas prontas
+
+DEMONSTRAÇÃO
+========
+`log`
+```
+23/04/2013 15:34:22 - New match 11348965 has started
+23/04/2013 15:36:04 - Roman killed Nick using M16
+23/04/2013 15:36:33 - <WORLD> killed Nick by DROWN
+23/04/2013 15:39:22 - Match 11348965 has ended
+
+24/04/2013 15:34:22 - New match 11348966 has started
+24/04/2013 15:36:04 - Roman killed Nick using M16
+24/04/2013 15:36:14 - Roman killed Nick using M16
+24/04/2013 15:36:24 - Roman killed Nick using M16
+24/04/2013 15:36:34 - Roman killed Nick using M16
+24/04/2013 15:36:44 - Roman killed Nick using M16
+24/04/2013 15:36:33 - <WORLD> killed Nick by DROWN
+24/04/2013 15:39:22 - Match 11348966 has ended
+
+25/04/2013 15:34:22 - New match 11348967 has started
+25/04/2013 15:36:04 - Roman killed Nick using M16
+25/04/2013 15:36:33 - <WORLD> killed Nick by DROWN
+25/04/2013 15:39:22 - Match 11348967 has ended
+```
+
+`Output`
+```
+Match 11348965
+|-------------------------------------------------------------------------------------|
+| Player               | Kills    | Deaths   | Principal Weapon     | Best Streak     |
+| Roman*               | 1        | 0        | M16                  | 1               |
+| Nick                 | 0        | 2        |                      | 0               |
+|-------------------------------------------------------------------------------------|
+
+Match 11348966
+|-------------------------------------------------------------------------------------|
+| Player               | Kills    | Deaths   | Principal Weapon     | Best Streak     |
+| Roman*               | 5        | 0        | M16                  | 5               | 5 deaths in 1 minute
+| Nick                 | 0        | 6        |                      | 0               |
+|-------------------------------------------------------------------------------------|
+
+Match 11348967
+|-------------------------------------------------------------------------------------|
+| Player               | Kills    | Deaths   | Principal Weapon     | Best Streak     |
+| Roman*               | 1        | 0        | M16                  | 1               |
+| Nick                 | 0        | 2        |                      | 0               |
+|-------------------------------------------------------------------------------------|
+```
